@@ -37,6 +37,7 @@ RUN apt-get update \
   procps \
   software-properties-common \
   sudo \
+  tree \
   unzip \
   vim \
   wget \
@@ -83,3 +84,5 @@ ENV USERNAME=$USERNAME
 ENV USER_UID=$USER_UID
 ENV USER_GID=$USER_GID
 ENV DEBIAN_FRONTEND=dialog
+
+CMD ["zsh"]
