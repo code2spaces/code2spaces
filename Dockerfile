@@ -75,6 +75,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
   && apt update \
   && apt install -y \
   nodejs \
+  python3-pip \
   snapd \
   yarn
 
