@@ -79,6 +79,11 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
   snapd \
   yarn
 
+RUN sudo apt install software-properties-common python-software-properties \
+  && sudo add-apt-repository ppa:pypa/ppa \
+  && sudo apt update \ 
+  && sudo apt install pipenv
+
 ENV USERNAME=$USERNAME
 ENV USER_UID=$USER_UID
 ENV USER_GID=$USER_GID
