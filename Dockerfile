@@ -13,6 +13,7 @@ RUN cp /etc/apt/sources.list /etc/apt/sources.list~ \
   && apt-get -y install --no-install-recommends \
   apt-transport-https \
   apt-utils \
+  bash \
   build-dep \
   build-essential \
   ca-certificates \
@@ -20,6 +21,7 @@ RUN cp /etc/apt/sources.list /etc/apt/sources.list~ \
   curl \
   dialog \
   fzf \
+  gcc \
   git \
   hub \
   imagemagick \
@@ -29,12 +31,17 @@ RUN cp /etc/apt/sources.list /etc/apt/sources.list~ \
   less \
   libc6 \
   libgcc1 \
+  libgif-dev \
   libgssapi-krb5-2 \
   libicu[0-9][0-9] \
+  libjpeg-dev \
   liblttng-ust0 \
+  libpng-dev \
   libstdc++6 \
+  libtiff-dev \
   locales \
   lsb-release \
+  make \
   npm \
   nano \
   openssh-client \
