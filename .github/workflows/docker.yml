@@ -1,0 +1,19 @@
+name: Docker
+on: pull_request
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{ steps.secrets.outputs.DOCKER_USERNAME }}
+          password: ${{ steps.secrets.outputs.DOCKER_PASSWORD }}
+          repository: ${{ github.repository }}
+          cache_froms: ${{ github.repository }}:latest
+          dockerfile: Dockerfile
+          always_pull: true
+          add_git_labels: true
+          tag_with_ref: true
+          tag_with_sha: true
+          push: true
