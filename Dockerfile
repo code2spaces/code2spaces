@@ -71,6 +71,13 @@ RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment \
 # Temporary fix for https://unix.stackexchange.com/questions/578949/sudo-setrlimitrlimit-core-operation-not-permitted
 RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 
+RUN sudo apt-get update \
+  && sudo apt-get -y install --no-install-recommends  \
+  libgif-dev \
+  libjpeg-dev \
+  libpng-dev \
+  libtiff-dev
+
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
   && apt update \
