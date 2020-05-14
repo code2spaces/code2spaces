@@ -76,6 +76,7 @@ RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 
 RUN sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list \
   && sudo apt-get update \
+  && sudo apt-get install \
   build-dep \
   imagemagick \
   libgif-dev \
