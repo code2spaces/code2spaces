@@ -7,10 +7,13 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN apt-get update \
+RUN cp /etc/apt/sources.list /etc/apt/sources.list~ \
+  && sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list \
+  && apt-get update \
   && apt-get -y install --no-install-recommends \
   apt-transport-https \
   apt-utils \
+  build-dep \
   build-essential \
   ca-certificates \
   cargo \
@@ -19,6 +22,7 @@ RUN apt-get update \
   fzf \
   git \
   hub \
+  imagemagick \
   gnupg \
   iproute2 \
   jq \
