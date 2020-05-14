@@ -7,14 +7,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN cp /etc/apt/sources.list /etc/apt/sources.list~ \
-  && sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list \
-  && apt-get update \
+RUN apt-get update \
   && apt-get -y install --no-install-recommends \
   apt-transport-https \
   apt-utils \
   bash \
-  build-dep \
   build-essential \
   ca-certificates \
   cargo \
@@ -24,21 +21,16 @@ RUN cp /etc/apt/sources.list /etc/apt/sources.list~ \
   gcc \
   git \
   hub \
-  imagemagick \
   gnupg \
   iproute2 \
   jq \
   less \
   libc6 \
   libgcc1 \
-  libgif-dev \
   libgssapi-krb5-2 \
   libicu[0-9][0-9] \
-  libjpeg-dev \
   liblttng-ust0 \
-  libpng-dev \
   libstdc++6 \
-  libtiff-dev \
   locales \
   lsb-release \
   make \
@@ -56,6 +48,15 @@ RUN cp /etc/apt/sources.list /etc/apt/sources.list~ \
   zsh \
   && apt-get autoremove -y \
   && rm -rf /var/lib/apt/lists/*
+
+RUN sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list \
+  && sudo apt-get update \
+  build-dep \
+  imagemagick \
+  libgif-dev \
+  libjpeg-dev \
+  libpng-dev \
+  libtiff-dev 
 
 RUN if id -u $USERNAME > /dev/null 2>&1; then \
   if [ "$USER_GID" != "$(id -G $USERNAME)" ]; then \
