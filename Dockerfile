@@ -49,15 +49,6 @@ RUN apt-get update \
   && apt-get autoremove -y \
   && rm -rf /var/lib/apt/lists/*
 
-RUN sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list \
-  && sudo apt-get update \
-  build-dep \
-  imagemagick \
-  libgif-dev \
-  libjpeg-dev \
-  libpng-dev \
-  libtiff-dev 
-
 RUN if id -u $USERNAME > /dev/null 2>&1; then \
   if [ "$USER_GID" != "$(id -G $USERNAME)" ]; then \
   groupmod --gid $USER_GID $USERNAME; \
@@ -82,6 +73,15 @@ RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment \
 
 # Temporary fix for https://unix.stackexchange.com/questions/578949/sudo-setrlimitrlimit-core-operation-not-permitted
 RUN echo "Set disable_coredump false" >> /etc/sudo.conf
+
+RUN sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list \
+  && sudo apt-get update \
+  build-dep \
+  imagemagick \
+  libgif-dev \
+  libjpeg-dev \
+  libpng-dev \
+  libtiff-dev 
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
