@@ -37,6 +37,7 @@ RUN apt-get update \
   procps \
   software-properties-common \
   sudo \
+  tree \
   unzip \
   vim \
   wget \
