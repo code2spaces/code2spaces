@@ -1,0 +1,37 @@
+{
+  "name": "@code2spaces/code2spaces",
+  "author": "Shun Kakinoki",
+  "license": "MIT",
+  "version": "3.5.1",
+  "homepage": "https://github.com/code2spaces/code2spaces",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/code2spaces/code2spaces.git"
+  },
+  "scripts": {
+    "test": "yarn lint && yarn release-test",
+    "release": "semantic-release",
+    "release-test": "semantic-release -d",
+    "lint": "yarn eclint-check && yarn prettier-check",
+    "fix": "yarn eclint-fix && yarn prettier-fix",
+    "eclint-check": "eclint check $(git grep --cached -l '')",
+    "eclint-fix": "eclint fix $(git grep --cached -l '')",
+    "prettier-check": "prettier --check \"**/*.{js,jsx,json,ts,tsx,css,html,yml,yaml,scss,sass}\"",
+    "prettier-fix": "prettier --write \"**/*.{js,jsx,json,ts,tsx,css,html,yml,yaml,scss,sass}\""
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^5.0.0",
+    "@semantic-release/exec": "^5.0.0",
+    "commitizen": "^4.0.3",
+    "eclint": "^2.8.1",
+    "git-cz": "^4.3.1",
+    "husky": "^4.2.5",
+    "prettier": "^1.19.1",
+    "semantic-release": "^17.0.4"
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git-cz --hook || true"
+    }
+  }
+}
