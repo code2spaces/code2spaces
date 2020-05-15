@@ -15,6 +15,7 @@ RUN apt-get update \
   ca-certificates \
   cargo \
   curl \
+  delta \
   dialog \
   fzf \
   git \
