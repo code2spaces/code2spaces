@@ -38,6 +38,7 @@ RUN apt-get update \
   procps \
   software-properties-common \
   sudo \
+  tmuxinator \
   tree \
   unzip \
   vim \
