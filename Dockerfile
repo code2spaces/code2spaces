@@ -32,8 +32,9 @@ RUN apt-get update \
   libstdc++6 \
   locales \
   lsb-release \
-  npm \
   nano \
+  neofetch \
+  npm \
   openssh-client \
   procps \
   software-properties-common \
