@@ -35,6 +35,7 @@ RUN apt-get update \
   nano \
   neofetch \
   npm \
+  openjdk-8-jre \
   openssh-client \
   procps \
   software-properties-common \
